@@ -1,4 +1,4 @@
-# Django settings for usv_investor_signal project.
+# Django settings for BrittBot project.
 
 import os
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -107,16 +107,16 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'usv_investor_signal.urls'
+ROOT_URLCONF = 'brittbot.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'usv_investor_signal.wsgi.application'
+WSGI_APPLICATION = 'brittbot.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_ROOT,'usv_investor_signal/templates'),
+    os.path.join(PROJECT_ROOT,'brittbot/templates'),
 )
 
 INSTALLED_APPS = (

@@ -3,11 +3,18 @@ from django import forms
 from django.forms import ModelForm
 import datetime
 
-class Location(models.Model):
-    name = models.CharField(max_length=200, unique=True)
+class Intro(models.Model):
+    to_name = models.CharField(max_length=200, unique=True)
+    to_email = models.CharField(max_length=200, unique=True)
+    for_name = models.CharField(max_length=200, unique=True)
+    for_email = models.CharField(max_length=200, unique=True)
+    purpose = models.CharField(max_length=500, unique=True)
+    sent = models.DateField(blank=True, null=True)
+    connected = models.DateField(blank=True, null=True)
+
 
     def __unicode__(self):
-        return self.name
+        return "Connecting %s to %s" % (to_email, for_email)
     
 
 ##################################################################################

@@ -1,7 +1,6 @@
 import os
-os.environ['DJANGO_SETTINGS_MODULE'] = 'usv_investor_signal.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'brittbot.settings'
 import imaplib, re, datetime
-from models import Company, Investor, USV_Member, Correspondence
 
 INBOX = "Inbox"
 SENT = "[Gmail]/Sent Mail"
