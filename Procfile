@@ -1,1 +1,1 @@
-web: gunicorn usv_investor_signal.wsgi
+web: gunicorn brittbot.wsgi
