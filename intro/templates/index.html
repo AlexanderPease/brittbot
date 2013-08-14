@@ -10,6 +10,17 @@
 
 <body>
 	<h3>BrittBot Intro Machine</h3>
+	{% if error %}
+		<p class="text-danger">
+			{{ error }}
+		</p>
+	{% endif %}
+	{% if sent %}
+		<p class="text-success">
+			Initial email has been sent to {{ sent }}
+		</p>
+	{% endif %}
+
 		<form class="form-horizontal" method="post" action="" role="form">{% csrf_token %}
 			<div class="form-group">
 		  		<label for="to_name" class="col-lg-2 control-label">To</label>
