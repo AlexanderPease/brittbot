@@ -21,13 +21,13 @@ class Intro(models.Model):
 # Form Models
 ##################################################################################
 
-'''class CompanyForm(ModelForm):
+class IntroForm(ModelForm):
     class Meta:
-        model = Company
-        def __init__(self, *args, **kwargs):
-            super(CompanyForm, self).__init__(*args, **kwargs)
-            self.fields['date'].widget = widgets.AdminDateWidget()
-'''
+        model = Intro
+        #def __init__(self, *args, **kwargs):
+        #    super(CompanyForm, self).__init__(*args, **kwargs)
+        #    self.fields['date'].widget = widgets.AdminDateWidget()
+
 
 class CompanySearchForm(forms.Form): 
     name = forms.CharField(max_length=64, required=False)

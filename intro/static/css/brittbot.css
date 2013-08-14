@@ -1,0 +1,83 @@
+   body {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+
+      /* Table row color modifications */
+      .table tbody tr.usv > td {
+        background-color: #dff0d8; /* Green, approved */
+      }
+
+      .table tbody tr.hot > td {
+        background-color: #f2dede; /* Red, error */
+        }
+
+      .table tbody tr.medium > td {
+        background-color: #fcf8e3; /* Yellow, warning */
+        }
+
+      .table tbody tr.cold > td {
+        background-color: #d9edf7; /* Blue, info */
+        }
+
+      /* Custom container */
+      .container-narrow {
+        margin: 0px auto;
+        max-width: 740px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+
+      /* Main marketing message */
+      .jumbotron {
+        margin: 50px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .input-large {
+        width: 300px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 40px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+
+      .marketing h4 {
+        text-align: center;
+      }
+      .marketing h3 {
+        text-align: center;
+      }
+
+      /* "Dead Simple" styling */
+      #dead_simple {
+        margin-top: 105px;
+      }
+
+      /* Footer images */
+      #footer_logo {
+        height: 40px;
+      }
+
+      /* List of representatives */
+      .img-polaroid {
+        height: 200px;
+      }
+
+      #list li {
+        height: 240px;
+      }
+
+      #img-center {
+        margin-right: 50px;
+      }
