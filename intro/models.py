@@ -4,10 +4,10 @@ from django.forms import ModelForm
 import datetime
 
 class Intro(models.Model):
-    to_name = models.CharField(max_length=200, unique=False)
-    to_email = models.CharField(max_length=200, unique=False)
-    for_name = models.CharField(max_length=200, unique=False)
-    for_email = models.CharField(max_length=200, unique=False)
+    to_name = models.CharField(max_length=75, unique=False)
+    to_email = models.EmailField(max_length=75, unique=False)
+    for_name = models.CharField(max_length=75, unique=False)
+    for_email = models.EmailField(max_length=75, unique=False)
     purpose = models.CharField(max_length=500, unique=False)
     sent = models.DateField(blank=True, null=True, unique=False) # Date the first email was sent
     connected = models.DateField(blank=True, null=True, unique=False) # Date the connection email was sent to both people
@@ -28,9 +28,12 @@ class IntroForm(ModelForm):
         #    super(CompanyForm, self).__init__(*args, **kwargs)
         #    self.fields['date'].widget = widgets.AdminDateWidget()
 
-
+# Not used
 class CompanySearchForm(forms.Form): 
-    name = forms.CharField(max_length=64, required=False)
+    to_name = forms.CharField(max_length=64)
+    to_email = forms.EmailField()
+    for_name = forms.CharField(max_length=64)
+
     following = forms.BooleanField(required=False, initial=True)
     tracking= forms.BooleanField( required=False, initial=True)
     passed = forms.BooleanField(required=False, initial=True)

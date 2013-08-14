@@ -33,7 +33,7 @@ def index(request):
 		try:
 			email_subject = "Intro to %s?" % intro.for_name
 			email_body = 'Hi %s, %s wants to meet with you to discuss %s. If you are open to the connection please <a href="#">click here</a>. If someone else should take this, please insert TBD' % (intro.to_name, intro.for_name, intro.purpose) 
-			#send_mail(email_subject, email_body, EMAIL_HOST_USER, [intro.to_email], fail_silently=False)
+			send_mail(email_subject, email_body, EMAIL_HOST_USER, [intro.to_email], fail_silently=False)
 			return redirect('/?sent=%s' % intro.to_name) # Always redirect after successful POST
 		except:
 			intro.delete()
