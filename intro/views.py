@@ -19,8 +19,13 @@ def index(request):
 
 		connection_body = '%s meet %s. You two should chat about %s. Thanks!' % (to_name, for_name, purpose)
 
+		print email_body
+		
+		intro = Intro.objects.create(to_name=to_name, to_email=to_email, for_name=for_name, for_email=for_email, purpose=purpose)
+
 		try:
 			intro = Intro.objects.create(to_name=to_name, to_email=to_email, for_name=for_name, for_email=for_email, purpose=purpose)
+			print intro
 		except:
 			print "Model could not be created"
 		#return redirect

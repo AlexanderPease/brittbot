@@ -9,24 +9,53 @@
 </head>
 
 <body>
-	<h1>Auto-Intro</h1>
+	<h3>BrittBot Intro Machine</h3>
+		<form class="form-horizontal" method="post" action="" role="form">{% csrf_token %}
+			<div class="form-group">
+		  		<label for="to_name" class="col-lg-2 control-label">To</label>
+		    	<div class="col-lg-4">
+		      		<input type="text" class="form-control" id="to_name" placeholder="Person to intro to">
+		    	</div>
+		  	</div>
+		  	<div class="form-group">
+		  		<label for="to_email" class="col-lg-2 control-label">Email</label>
+		    	<div class="col-lg-4">
+		      		<input type="text" class="form-control" id="to_email" placeholder="Email">
+		    	</div>
+		  	</div>
+		  	<div class="form-group">
+		  		<label for="for_name" class="col-lg-2 control-label">For</label>
+		    	<div class="col-lg-4">
+		      		<input type="text" class="form-control" id="inputEmail1" placeholder="Person who wants to be introed">
+		    	</div>
+		  	</div>
+		  	<div class="form-group">
+		  		<label for="for_email" class="col-lg-2 control-label">Email</label>
+		    	<div class="col-lg-4">
+		      		<input type="text" class="form-control" id="for_email" placeholder="Email">
+		    	</div>
+		  	</div>
+		  	<div class="form-group">
+		  		<label for="purpose" class="col-lg-2 control-label">Purpose</label>
+		    	<div class="col-lg-4">
+		      		<textarea class="form-control" id="purpose" rows="4" placeholder="Why he/she wants to connect"></textarea>
+		    	</div>
+		  	</div>
 
-	<form class="form-horizontal" method="post" action="">{% csrf_token %}
-		<p>
+		  	<div class="form-group">
+		    	<div class="col-lg-offset-2 col-lg-10">
+		      		<button type="submit" class="btn btn-primary">Send</button>
+		    	</div>
+		  	</div>
+		</form>
+
+			<p>
 			Hi 
-			<input name="to" type="text" class="form-control" placeholder="Name of Person">, </br>
-			<input name="for" type="text" class="form-control" placeholder="Name of Person"> wants to meet with you to discuss
-			<textarea class="form-control" rows="3"></textarea>. 
+			<input name="to_name" type="text" class="form-control" placeholder="Name of Person">, </br>
+			<input name="for_name" type="text" class="form-control" placeholder="Name of Person"> wants to meet with you to discuss
+			<textarea class="form-control" rows="3"></textarea>. </br>
 			If you're open to the connection please <a href="#">click here</a>. 
-			This will automatically generate an email from brittany@usv.com to connect the two of you. Thanks!
-
-			If someone else should take this, please insert their name
-			<input type="text" class="form-control" placeholder="Name of Person">
-			and email 
-			<input type="text" class="form-control" placeholder="Name of Person">.
-		</p>
-		<button type="submit" class="btn btn-primary">Send</button>
-	</form>
+			This will automatically generate an email from brittany@usv.com to connect the two of you. Thanks! </br>
 
 </body>
 </html>

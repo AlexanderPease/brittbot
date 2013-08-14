@@ -4,17 +4,17 @@ from django.forms import ModelForm
 import datetime
 
 class Intro(models.Model):
-    to_name = models.CharField(max_length=200, unique=True)
-    to_email = models.CharField(max_length=200, unique=True)
-    for_name = models.CharField(max_length=200, unique=True)
-    for_email = models.CharField(max_length=200, unique=True)
-    purpose = models.CharField(max_length=500, unique=True)
-    sent = models.DateField(blank=True, null=True)
-    connected = models.DateField(blank=True, null=True)
+    to_name = models.CharField(max_length=200)
+    to_email = models.CharField(max_length=200)
+    for_name = models.CharField(max_length=200)
+    for_email = models.CharField(max_length=200)
+    purpose = models.CharField(max_length=500)
+    sent = models.DateField(blank=True, null=True) # Date the first email was sent
+    connected = models.DateField(blank=True, null=True) # Date the connection email was sent to both people
 
 
     def __unicode__(self):
-        return "Connecting %s to %s" % (to_email, for_email)
+        return "Connecting %s (%s) to %s (%s)" % (to_name, to_email, for_name, for_email)
     
 
 ##################################################################################
