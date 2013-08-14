@@ -4,13 +4,13 @@ from django.forms import ModelForm
 import datetime
 
 class Intro(models.Model):
-    to_name = models.CharField(max_length=200)
-    to_email = models.CharField(max_length=200)
-    for_name = models.CharField(max_length=200)
-    for_email = models.CharField(max_length=200)
-    purpose = models.CharField(max_length=500)
-    sent = models.DateField(blank=True, null=True) # Date the first email was sent
-    connected = models.DateField(blank=True, null=True) # Date the connection email was sent to both people
+    to_name = models.CharField(max_length=200, unique=False)
+    to_email = models.CharField(max_length=200, unique=False)
+    for_name = models.CharField(max_length=200, unique=False)
+    for_email = models.CharField(max_length=200, unique=False)
+    purpose = models.CharField(max_length=500, unique=False)
+    sent = models.DateField(blank=True, null=True, unique=False) # Date the first email was sent
+    connected = models.DateField(blank=True, null=True, unique=False) # Date the connection email was sent to both people
 
 
     def __unicode__(self):
