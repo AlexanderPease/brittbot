@@ -18,6 +18,11 @@ def index(request):
 		for_email = request.POST.get('for_email')
 		purpose = request.POST.get('purpose')
 
+		# Check email address
+		if not "@" in to_email or not "." in to_email or not "@" in for_email or not "." in for_email:
+			return render_to_response('index.html', {'error': 'Check email addresses'}, context_instance=RequestContext(request))
+
+
 		# Save to database
 		try:
 			intro = Intro.objects.create(to_name=to_name, to_email=to_email, for_name=for_name, for_email=for_email, purpose=purpose)

@@ -6,6 +6,13 @@
 	<link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" media="screen">
   	<script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
   	<link href="{{ STATIC_URL }}css/brittbot.css" rel="stylesheet" media="screen">
+
+  	<!-- Script for dynamically displaying email --> 
+  	<script>
+		function displayMessage()
+		{
+		document.getElementById("message").innerHTML="test";}
+	</script>
 </head>
 
 <body>
@@ -60,14 +67,14 @@
 		  	</div>
 		</form>
 
-		<p>
-			Hi 
-			<input name="to_name" type="text" class="form-control" placeholder="Name of Person">, </br>
-			<input name="for_name" type="text" class="form-control" placeholder="Name of Person"> wants to meet with you to discuss
-			<textarea class="form-control" rows="3"></textarea>. </br>
-			If you're open to the connection please <a href="#">click here</a>. 
-			This will automatically generate an email from brittany@usv.com to connect the two of you. Thanks! </br>
+		<p id="message">
+			Hi, </br> wants to meet with you to discuss. </br> If you're open to the connection please <a href=>click here</a>. This will automatically generate an email from brittany@usv.com to connect the two of you. Thanks! </br>
 		</p>
+
+		<button class="btn btn-info" onclick="displayMessage()">Preview Email</button>
+
+
+		
 
 </body>
 </html>
