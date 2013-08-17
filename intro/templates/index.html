@@ -30,32 +30,52 @@
 
 		<form class="form-horizontal" method="post" action="" role="form">{% csrf_token %}
 			<div class="form-group">
+				{% for error in form.to_name.errors %}
+					<p class="text-error">{{ error }}</p>
+				{% endfor %}
 		  		<label for="to_name" class="col-lg-2 control-label">To</label>
 		    	<div class="col-lg-4">
+		    		{{ form.to_name }}
 		      		<input type="text" class="form-control" name="to_name" placeholder="Person to intro to">
 		    	</div>
 		  	</div>
 		  	<div class="form-group">
+		  		{% for error in form.to_email.errors %}
+					<p class="text-error">{{ error }}</p>
+				{% endfor %}
 		  		<label for="to_email" class="col-lg-2 control-label">Email</label>
 		    	<div class="col-lg-4">
+		    		{{ form.to_email }}
 		      		<input type="text" class="form-control" name="to_email" placeholder="Email">
 		    	</div>
 		  	</div>
 		  	<div class="form-group">
+		  		{% for error in form.for_name.errors %}
+					<p class="text-error">{{ error }}</p>
+				{% endfor %}
 		  		<label for="for_name" class="col-lg-2 control-label">For</label>
 		    	<div class="col-lg-4">
+		    		{{ form.for_name }}
 		      		<input type="text" class="form-control" name="for_name" placeholder="Person who wants to be introed">
 		    	</div>
 		  	</div>
 		  	<div class="form-group">
+		  		{% for error in form.for_email.errors %}
+					<p class="text-error">{{ error }}</p>
+				{% endfor %}
 		  		<label for="for_email" class="col-lg-2 control-label">Email</label>
 		    	<div class="col-lg-4">
+		    		{{ form.for_email }}
 		      		<input type="text" class="form-control" name="for_email" placeholder="Email">
 		    	</div>
 		  	</div>
 		  	<div class="form-group">
+		  		{% for error in form.purpose.errors %}
+					<p class="text-error">{{ error }}</p>
+				{% endfor %}
 		  		<label for="purpose" class="col-lg-2 control-label">Purpose</label>
 		    	<div class="col-lg-4">
+		    		{{ form.purpose }}
 		      		<textarea class="form-control" name="purpose" rows="4" placeholder="Why he/she wants to connect"></textarea>
 		    	</div>
 		  	</div>
@@ -66,6 +86,16 @@
 		    	</div>
 		  	</div>
 		</form>
+
+
+
+		<div class="control-group">
+				
+				<label class="control-label">Name</label>
+				<div class="controls">
+			  		{{ form.name }}
+				</div>
+			</div>
 
 		<p id="message">
 			Hi, </br> wants to meet with you to discuss. </br> If you're open to the connection please <a href=>click here</a>. This will automatically generate an email from brittany@usv.com to connect the two of you. Thanks! </br>
