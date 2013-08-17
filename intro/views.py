@@ -51,7 +51,7 @@ def response(request, intro_id):
 			intro.connected = datetime.date.today()
 			intro.save()
 			return render_to_response('response.html', {'intro': intro}, context_instance=RequestContext(request))
-		else:
+		except:
 			return render_to_response('response.html', {'error': 'Intro could not be sent, please reload the page or contact brittany@usv.com'}, context_instance=RequestContext(request))
 	else:
 		return render_to_response('response.html', {'error': 'Page should not be loaded by GET'}, context_instance=RequestContext(request))
