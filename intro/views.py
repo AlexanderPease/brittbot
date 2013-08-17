@@ -10,9 +10,9 @@ import datetime
 
 
 def index(request):
-	form = IntroForm(request.POST) 
-
 	if request.method == 'POST':
+		print 'POST'
+		form = IntroForm(request.POST) 
 		# Valid form submitted
 		if form.is_valid(): 
 			intro = form.save() # Creates instance
@@ -32,7 +32,7 @@ def index(request):
 			return render_to_response('index.html', {'form': form, 'error': 'Model could not be created, check database'}, context_instance=RequestContext(request))
 	# GET request
 	else:
+		form = IntroForm
 		sent = request.GET.get('sent')
+		print 'GET'
 		return render_to_response('index.html', {'form': form, 'sent': sent}, context_instance=RequestContext(request))
-
-	

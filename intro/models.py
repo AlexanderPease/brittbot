@@ -1,5 +1,4 @@
 from django.db import models
-from django import forms
 from django.forms import ModelForm
 import datetime
 
@@ -17,30 +16,16 @@ class Intro(models.Model):
         return "Connecting %s (%s) to %s (%s)" % (to_name, to_email, for_name, for_email)
     
 
-##################################################################################
-# Form Models
-##################################################################################
-
 class IntroForm(ModelForm):
     class Meta:
         model = Intro
-        #def __init__(self, *args, **kwargs):
-        #    super(CompanyForm, self).__init__(*args, **kwargs)
-        #    self.fields['date'].widget = widgets.AdminDateWidget()
 
-# Not used
-class CompanySearchForm(forms.Form): 
-    to_name = forms.CharField(max_length=64)
-    to_email = forms.EmailField()
-    for_name = forms.CharField(max_length=64)
-
-    following = forms.BooleanField(required=False, initial=True)
-    tracking= forms.BooleanField( required=False, initial=True)
-    passed = forms.BooleanField(required=False, initial=True)
-    no_status = forms.BooleanField(required=False, initial=True)
-    #investor = forms.ChoiceField(required=False)
-    min_raised = forms.IntegerField(required=False)
-    max_raised = forms.IntegerField(required=False)
+    def __init__(self, *args, **kwargs):
+        super(IntroForm, self).__init__(*args, **kwargs)
+        self.fields['to_name'].widget.attrs = {'class': 'form-control', 'placeholder': 'Person to intro to'}
+        self.fields['to_email'].widget.attrs = {'class': 'form-control', 'placeholder': 'Email'}
+        self.fields['for_name'].widget.attrs = {'class': 'form-control', 'placeholder': 'Person asking for the intro'}
+        self.fields['for_email'].widget.attrs = {'class': 'form-control', 'placeholder': 'Email'}
 
     
     
