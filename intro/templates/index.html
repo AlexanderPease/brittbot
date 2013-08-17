@@ -11,12 +11,14 @@
   	<script>
 		function displayMessage()
 		{
-		document.getElementById("message").innerHTML="test";}
+		document.getElementById("message").innerHTML="Hi, </br> wants to meet with you to discuss. </br> If you're open to the connection please <a href=>click here</a>. This will automatically generate an email from brittany@usv.com to connect the two of you. Thanks!";}
 	</script>
 </head>
 
 <body>
-	<h3>BrittBot Intro Machine</h3>
+	<div class="header">
+		<h3 class="text-muted">BrittBot Intro Machine<h3>
+	</div>	
 	{% if error %}
 		<p class="text-danger">
 			{{ error }}
@@ -28,77 +30,76 @@
 		</p>
 	{% endif %}
 
-		<form class="form-horizontal" method="post" action="" role="form">{% csrf_token %}
-			<div class="form-group">
-				{% for error in form.to_name.errors %}
-					<p class="text-error">{{ error }}</p>
-				{% endfor %}
-		  		<label for="to_name" class="col-lg-2 control-label">To</label>
-		    	<div class="col-lg-4">
-		    		{{ form.to_name }}
-		    	</div>
-		  	</div>
-		  	<div class="form-group">
-		  		{% for error in form.to_email.errors %}
-					<p class="text-error">{{ error }}</p>
-				{% endfor %}
-		  		<label for="to_email" class="col-lg-2 control-label">Email</label>
-		    	<div class="col-lg-4">
-		    		{{ form.to_email }}
-		    	</div>
-		  	</div>
-		  	<div class="form-group">
-		  		{% for error in form.for_name.errors %}
-					<p class="text-error">{{ error }}</p>
-				{% endfor %}
-		  		<label for="for_name" class="col-lg-2 control-label">For</label>
-		    	<div class="col-lg-4">
-		    		{{ form.for_name }}
-		    	</div>
-		  	</div>
-		  	<div class="form-group">
-		  		{% for error in form.for_email.errors %}
-					<p class="text-error">{{ error }}</p>
-				{% endfor %}
-		  		<label for="for_email" class="col-lg-2 control-label">Email</label>
-		    	<div class="col-lg-4">
-		    		{{ form.for_email }}
-		    	</div>
-		  	</div>
-		  	<div class="form-group">
-		  		{% for error in form.purpose.errors %}
-					<p class="text-error">{{ error }}</p>
-				{% endfor %}
-		  		<label for="purpose" class="col-lg-2 control-label">Purpose</label>
-		    	<div class="col-lg-4">
-		    		{{ form.purpose }}
-		    	</div>
-		  	</div>
+		<div class="row">
+  			<div class="col-lg-6">
 
-		  	<div class="form-group">
-		    	<div class="col-lg-offset-2 col-lg-10">
-		      		<button type="submit" class="btn btn-primary">Send</button>
-		    	</div>
-		  	</div>
-		</form>
+				<form class="form-horizontal" method="post" action="" role="form">{% csrf_token %}
+					<div class="form-group">
+						{% for error in form.to_name.errors %}
+							<p class="text-error">{{ error }}</p>
+						{% endfor %}
+				  		<label for="to_name" class="col-lg-2 control-label">To</label>
+				    	<div class="col-lg-8">
+				    		{{ form.to_name }}
+				    	</div>
+				  	</div>
+				  	<div class="form-group">
+				  		{% for error in form.to_email.errors %}
+							<p class="text-error">{{ error }}</p>
+						{% endfor %}
+				  		<label for="to_email" class="col-lg-2 control-label">Email</label>
+				    	<div class="col-lg-8">
+				    		{{ form.to_email }}
+				    	</div>
+				  	</div>
+				  	<div class="form-group">
+				  		{% for error in form.for_name.errors %}
+							<p class="text-error">{{ error }}</p>
+						{% endfor %}
+				  		<label for="for_name" class="col-lg-2 control-label">For</label>
+				    	<div class="col-lg-8">
+				    		{{ form.for_name }}
+				    	</div>
+				  	</div>
+				  	<div class="form-group">
+				  		{% for error in form.for_email.errors %}
+							<p class="text-error">{{ error }}</p>
+						{% endfor %}
+				  		<label for="for_email" class="col-lg-2 control-label">Email</label>
+				    	<div class="col-lg-8">
+				    		{{ form.for_email }}
+				    	</div>
+				  	</div>
+				  	<div class="form-group">
+				  		{% for error in form.purpose.errors %}
+							<p class="text-error">{{ error }}</p>
+						{% endfor %}
+				  		<label for="purpose" class="col-lg-2 control-label">Purpose</label>
+				    	<div class="col-lg-8">
+				    		{{ form.purpose }}
+				    	</div>
+				  	</div>
+
+				  	<div class="form-group">
+				    	<div class="col-lg-offset-2 col-lg-10">
+				      		<button type="submit" class="btn btn-primary">Send</button>
+				    	</div>
+				  	</div>
 
 
+				</form>
+			</div><!--first column-->
 
-		<div class="control-group">
+			<div class="col-lg-5">
 				
-				<label class="control-label">Name</label>
-				<div class="controls">
-			  		{{ form.name }}
-				</div>
-			</div>
-
-		<p id="message">
-			Hi, </br> wants to meet with you to discuss. </br> If you're open to the connection please <a href=>click here</a>. This will automatically generate an email from brittany@usv.com to connect the two of you. Thanks! </br>
-		</p>
-
-		<button class="btn btn-info" onclick="displayMessage()">Preview Email</button>
+				<p id="message">
+					Click "Preview Email" to display</br>
+				</p>
+				
+				<button class="btn btn-info" onclick="displayMessage()">Preview Email</button>
 
 
+			</div><!--second column-->
 		
 
 </body>
