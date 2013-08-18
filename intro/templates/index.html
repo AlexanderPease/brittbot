@@ -2,17 +2,11 @@
 <html>
 <head>
 	<title>BrittBot</title>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<!-- Bootstrap --> 
 	<link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" media="screen">
   	<script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
   	<link href="{{ STATIC_URL }}css/brittbot.css" rel="stylesheet" media="screen">
-
-  	<!-- Script for dynamically displaying email --> 
-  	<script>
-		function displayMessage()
-		{
-		document.getElementById("message").innerHTML="Hi, </br> wants to meet with you to discuss. </br> If you're open to the connection please <a href=>click here</a>. This will automatically generate an email from brittany@usv.com to connect the two of you. Thanks!";}
-	</script>
 </head>
 
 <body>
@@ -30,78 +24,87 @@
 		</p>
 	{% endif %}
 
-		<div class="row">
-  			<div class="col-lg-6">
+	<div class="row">
+			<div class="col-lg-6">
 
-				<form class="form-horizontal" method="post" action="" role="form">{% csrf_token %}
-					<div class="form-group">
-						{% for error in form.to_name.errors %}
-							<p class="text-error">{{ error }}</p>
-						{% endfor %}
-				  		<label for="to_name" class="col-lg-2 control-label">To</label>
-				    	<div class="col-lg-8">
-				    		{{ form.to_name }}
-				    	</div>
-				  	</div>
-				  	<div class="form-group">
-				  		{% for error in form.to_email.errors %}
-							<p class="text-error">{{ error }}</p>
-						{% endfor %}
-				  		<label for="to_email" class="col-lg-2 control-label">Email</label>
-				    	<div class="col-lg-8">
-				    		{{ form.to_email }}
-				    	</div>
-				  	</div>
-				  	<div class="form-group">
-				  		{% for error in form.for_name.errors %}
-							<p class="text-error">{{ error }}</p>
-						{% endfor %}
-				  		<label for="for_name" class="col-lg-2 control-label">For</label>
-				    	<div class="col-lg-8">
-				    		{{ form.for_name }}
-				    	</div>
-				  	</div>
-				  	<div class="form-group">
-				  		{% for error in form.for_email.errors %}
-							<p class="text-error">{{ error }}</p>
-						{% endfor %}
-				  		<label for="for_email" class="col-lg-2 control-label">Email</label>
-				    	<div class="col-lg-8">
-				    		{{ form.for_email }}
-				    	</div>
-				  	</div>
-				  	<div class="form-group">
-				  		{% for error in form.purpose.errors %}
-							<p class="text-error">{{ error }}</p>
-						{% endfor %}
-				  		<label for="purpose" class="col-lg-2 control-label">Purpose</label>
-				    	<div class="col-lg-8">
-				    		{{ form.purpose }}
-				    	</div>
-				  	</div>
+			<form class="form-horizontal" method="post" action="" role="form">{% csrf_token %}
+				<div class="form-group">
+					{% for error in form.to_name.errors %}
+						<p class="text-error">{{ error }}</p>
+					{% endfor %}
+			  		<label for="to_name" class="col-lg-2 control-label">To</label>
+			    	<div class="col-lg-8">
+			    		{{ form.to_name }}
+			    	</div>
+			  	</div>
+			  	<div class="form-group">
+			  		{% for error in form.to_email.errors %}
+						<p class="text-error">{{ error }}</p>
+					{% endfor %}
+			  		<label for="to_email" class="col-lg-2 control-label">Email</label>
+			    	<div class="col-lg-8">
+			    		{{ form.to_email }}
+			    	</div>
+			  	</div>
+			  	<div class="form-group">
+			  		{% for error in form.for_name.errors %}
+						<p class="text-error">{{ error }}</p>
+					{% endfor %}
+			  		<label for="for_name" class="col-lg-2 control-label">For</label>
+			    	<div class="col-lg-8">
+			    		{{ form.for_name }}
+			    	</div>
+			  	</div>
+			  	<div class="form-group">
+			  		{% for error in form.for_email.errors %}
+						<p class="text-error">{{ error }}</p>
+					{% endfor %}
+			  		<label for="for_email" class="col-lg-2 control-label">Email</label>
+			    	<div class="col-lg-8">
+			    		{{ form.for_email }}
+			    	</div>
+			  	</div>
+			  	<div class="form-group">
+			  		{% for error in form.purpose.errors %}
+						<p class="text-error">{{ error }}</p>
+					{% endfor %}
+			  		<label for="purpose" class="col-lg-2 control-label">Purpose</label>
+			    	<div class="col-lg-8">
+			    		{{ form.purpose }}
+			    	</div>
+			  	</div>
 
-				  	<div class="form-group">
-				    	<div class="col-lg-offset-2 col-lg-10">
-				      		<button type="submit" class="btn btn-primary">Send</button>
-				    	</div>
-				  	</div>
-
-
-				</form>
-			</div><!--first column-->
-
-			<div class="col-lg-5">
-				
-				<p id="message">
-					Click "Preview Email" to display</br>
-				</p>
-				
-				<button class="btn btn-info" onclick="displayMessage()">Preview Email</button>
+			  	<div class="form-group">
+			    	<div class="col-lg-offset-2 col-lg-10">
+			      		<button type="submit" class="btn btn-primary">Send</button>
+			    	</div>
+			  	</div>
 
 
-			</div><!--second column-->
-		
+			</form>
+		</div><!--first column-->
 
+		<div class="col-lg-5">
+			<p id="message">
+			</p>
+		</div><!--second column-->
+	</div><!--end of row-->
+
+  	<!-- Script for dynamically displaying preview of email --> 
+  	<script>
+		$("input, textarea").keyup(function () {
+			var to_name = $("#id_to_name").val();
+			var to_email = $("#id_to_email").val();
+			var for_name = $("#id_for_name").val();
+			var purpose = $("#id_purpose").val();
+			var preview_ask = "To: " + to_email + "</br> </br>" + 
+				"Hi " + to_name + 
+				", </br>" + for_name +
+				" wants to meet with you to discuss " + purpose +
+				". </br> If you're open to the connection please <a href=>click here</a>. This will automatically generate an email from brittany@usv.com to connect the two of you. Thanks!";
+			$("#message").html(preview_ask);
+		 }).keyup();
+	</script>
 </body>
 </html>
 
