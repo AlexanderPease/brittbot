@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 from intro.models import Intro, IntroForm
 import datetime
 
-RESPONSE_URL = 'http://brittbot.herokuapp.com/response/'
+RESPONSE_URL = "http://brittbot.herokuapp.com/response/"
 
 # Form for Brittany to fill out. Sends initial email request.
 def index(request):
@@ -18,12 +18,17 @@ def index(request):
 		# Valid form submitted
 		if form.is_valid(): 
 			intro = form.save() # Creates instance
-
 			# Send initial email
 			try:
 				email_subject = "Intro to %s?" % intro.for_name
-				email_body = 'Hi %s, %s wants to meet with you to discuss %s. If you are open to the connection please <a href="%s%s">click here</a>.' % (intro.to_name, intro.for_name, intro.purpose, RESPONSE_URL, intro_id) 
-				send_mail(email_subject, email_body, EMAIL_HOST_USER, [intro.to_email], fail_silently=False)
+				email_body = 'Hi %s, %s wants to meet with you to discuss %s. If you are open to the connection please <a href="%s%s">click here</a>.' % (intro.to_name, intro.for_name, intro.purpose, RESPONSE_URL, intro.id) 
+				print "sending to: %s" % intro.to_email
+				print "subject: %s" % email_subject
+				print "body: %s" % email_body
+				print "host: %s" % settings.EMAIL_HOST_USER
+
+				send_mail(email_subject, email_body, settings.EMAIL_HOST_USER, [intro.to_email], fail_silently=False)
+				print "email sent"
 				intro.sent = datetime.date.today()
 				intro.save()
 				return redirect('/?sent=%s' % intro.to_name) # Always redirect after successful POST

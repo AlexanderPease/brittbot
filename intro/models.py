@@ -13,7 +13,7 @@ class Intro(models.Model):
 
 
     def __unicode__(self):
-        return "Connecting %s (%s) to %s (%s)" % (to_name, to_email, for_name, for_email)
+        return "Connecting %s (%s) to %s (%s)" % (self.to_name, self.to_email, self.for_name, self.for_email)
     
 
 class IntroForm(ModelForm):
