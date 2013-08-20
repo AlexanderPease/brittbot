@@ -9,7 +9,7 @@ from django.core.mail import send_mail
 from intro.models import Intro, IntroForm
 import datetime
 
-RESPONSE_URL = 'http://127.0.0.1:8000/response/'#"http://brittbot.herokuapp.com/response/"
+RESPONSE_URL = 'http://brittbot.herokuapp.com/response/'
 
 '''
 Form for Brittany to fill out. Sends initial email request.
