@@ -25,7 +25,7 @@ def index(request):
 			try:
 				email_subject = "Intro to %s?" % intro.for_name
 				text_body = 'Hi %s, %s wants to meet with you to %s If you are open to the connection please email reply to brittany@usv.com. This will automatically generate an email from brittany@usv.com to connect the two of you. Thanks! Brittany' % (intro.to_name, intro.for_name, intro.purpose)
-				html_body = 'Hi %s, %s wants to meet with you to %s If you are open to the connection please <a href="%s%s">click here</a>. This will automatically generate an email from brittany@usv.com to connect the two of you. <\\br> Thanks! Brittany' % (intro.to_name, intro.for_name, intro.purpose, RESPONSE_URL, intro.id)
+				html_body = 'Hi %s, %s wants to meet with you to %s </br></br>If you are open to the connection please <a href="%s%s">click here</a>. </br></br>This will automatically generate an email from brittany@usv.com to connect the two of you. </br></br> Thanks! Brittany' % (intro.to_name, intro.for_name, intro.purpose, RESPONSE_URL, intro.id)
 				
 				print "sending to: %s" % intro.to_email
 				print "subject: %s" % email_subject
