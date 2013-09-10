@@ -24,8 +24,8 @@ def index(request):
 			# Send initial email
 			try:
 				email_subject = "Intro to %s?" % intro.for_name
-				text_body = 'Hi %s, %s wants to meet with you to discuss %s. If you are open to the connection please email reply to brittany@usv.com.' % (intro.to_name, intro.for_name, intro.purpose)
-				html_body = 'Hi %s, %s wants to meet with you to discuss %s. If you are open to the connection please <a href="%s%s">click here</a>.' % (intro.to_name, intro.for_name, intro.purpose, RESPONSE_URL, intro.id)
+				text_body = 'Hi %s, %s wants to meet with you to %s If you are open to the connection please email reply to brittany@usv.com. This will automatically generate an email from brittany@usv.com to connect the two of you. Thanks! Brittany' % (intro.to_name, intro.for_name, intro.purpose)
+				html_body = 'Hi %s, %s wants to meet with you to %s If you are open to the connection please <a href="%s%s">click here</a>. This will automatically generate an email from brittany@usv.com to connect the two of you. <\\br> Thanks! Brittany' % (intro.to_name, intro.for_name, intro.purpose, RESPONSE_URL, intro.id)
 				
 				print "sending to: %s" % intro.to_email
 				print "subject: %s" % email_subject
@@ -69,7 +69,7 @@ def response(request, intro_id):
 
 	email_subject = "%s <-> %s" % (intro.for_name, intro.to_name)
 	email_body = 'Great that you guys are connecting!'
-	send_mail(email_subject, email_body, settings.EMAIL_HOST_USER, [intro.to_email], fail_silently=False)
+	send_mail(email_subject, email_body, settings.EMAIL_HOST_USER, [intro.to_email, intro.for_email], fail_silently=False)
 	intro.connected = datetime.date.today()
 	intro.save()
 	return render_to_response('response.html', {'intro': intro}, context_instance=RequestContext(request))
